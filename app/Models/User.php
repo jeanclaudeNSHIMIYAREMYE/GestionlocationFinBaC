@@ -49,4 +49,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    public function hasRole($role){
+        return $this->Roles()->where('name',$role)->first() !==null;
+    }
+    public function hasRoles($roles){
+        return $this->Roles()->whereIn('name',$roles)->first() !==null;
+    }
 }
