@@ -1,15 +1,10 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Http\Livewire\ArticleComp;
-use App\Http\Livewire\clientComp;
-use App\Http\Livewire\TarifComp;
-use App\Http\Livewire\TypeArticleComp;
-use App\Http\Livewire\Utilisateurs;
-use App\Models\Article;
-use App\Models\TypeArticle;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth; // Correctement ajouté
 
 /*
 |--------------------------------------------------------------------------
@@ -24,29 +19,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 // Le groupe des routes relatives aux administrateurs uniquement
-Route::group([
-    "middleware" => ["auth", "auth.admin"],
-    'as' => 'admin.'
-], function(){
-
-    Route::group([
-        "prefix" => "habilitations",
-        'as' => 'habilitations.'
-    ], function(){
-
-        
-        //Route::get("/rolesetpermissions", [UserController::class, "index"])->name("rolespermissions.index");
-        //
-
-    });
-
-
-
+Route::middleware(['admin'])->group(function () {
+    
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+    // Ajoute d'autres routes admin ici
 });
-
-
-
-
