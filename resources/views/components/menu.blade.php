@@ -93,7 +93,7 @@
         </li>
         @endcan
 
-        @can("locataires")
+        @can("locataire")
         <li class="nav-header">LOCATION</li>
         <li class="nav-item">
             <a href="" class="nav-link ">
