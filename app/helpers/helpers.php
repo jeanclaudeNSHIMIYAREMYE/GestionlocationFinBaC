@@ -11,7 +11,7 @@ define("DEFAULTPASSOWRD", "password");
 
 
 function userFullName(){
-    return auth()->user()->prenom . " " . auth()->user()->nom;
+    return auth()->user()->name;
 }
 
 function setMenuClass($route, $classe){

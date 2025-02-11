@@ -12,7 +12,7 @@
           </li>
 
         @can("proprietaire")
-        <li class="nav-item">
+        <li class="nav-item  ">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -38,19 +38,19 @@
         @endcan
 
         @can("admin")
-        <li class="nav-item ">
-            <a href="#" class="nav-link ">
+        <li class="nav-ite {{ setMenuClass('admin.users', 'menu-open') }} ">
+            <a href= "" class="nav-link {{ setMenuClass('admin.users', 'active') }}  ">
               <i class=" nav-icon fas fa-user-shield"></i>
               <p>
-               proprietaiires
+               Gestion Utilisateurs
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item ">
                 <a
-                href=""
-                class="nav-link "
+                href="{{ route('admin.users') }}"
+                class="nav-link {{ setMenuClass('admin.users', 'active') }}"
                 >
                   <i class=" nav-icon fas fa-users-cog"></i>
                   <p>Utilisateurs</p>

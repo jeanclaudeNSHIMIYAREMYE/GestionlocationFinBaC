@@ -1,10 +1,9 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\HomeController;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth; // Correctement ajouté
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +18,13 @@ use Illuminate\Support\Facades\Auth; // Correctement ajouté
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
+// Route pour la page d'accueil
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Le groupe des routes relatives aux administrateurs uniquement
-Route::middleware(['admin'])->group(function () {
-    
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
-    // Ajoute d'autres routes admin ici
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+
+    // Ajoutez d'autres routes comme edit, update, destroy ici...
 });
