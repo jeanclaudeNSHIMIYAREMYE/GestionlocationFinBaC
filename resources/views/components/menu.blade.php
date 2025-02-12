@@ -38,8 +38,8 @@
         @endcan
 
         @can("admin")
-        <li class="nav-ite {{ setMenuClass('admin.users', 'menu-open') }} ">
-            <a href= "" class="nav-link {{ setMenuClass('admin.users', 'active') }}  ">
+        <li class="nav-ite {{ setMenuClass('users.index', 'menu-open') }} ">
+            <a href= "" class="nav-link {{ setMenuClass('users.index', 'active') }}  ">
               <i class=" nav-icon fas fa-user-shield"></i>
               <p>
                Gestion Utilisateurs
@@ -49,8 +49,8 @@
             <ul class="nav nav-treeview">
               <li class="nav-item ">
                 <a
-                href="{{ route('admin.users') }}"
-                class="nav-link {{ setMenuClass('admin.users', 'active') }}"
+                href="{{ route('users.index') }}"
+                class="nav-link {{ setMenuClass('users.index', 'active') }}"
                 >
                   <i class=" nav-icon fas fa-users-cog"></i>
                   <p>Utilisateurs</p>

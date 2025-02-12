@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 // Le groupe des routes relatives aux administrateurs uniquement
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+   // Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users');
+   Route::resources([
+    'roles' => RoleController::class,
+    'users' => UserController::class,
+
+]);
 
     // Ajoutez d'autres routes comme edit, update, destroy ici...
 });
